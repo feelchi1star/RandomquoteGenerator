@@ -74,6 +74,6 @@ wa.addEventListener("click", () => {
 
 //   Adding event Listner to New Quote Button
 window.onload = () => {
-  setInterval(randomQoute, 10000);
+  setInterval(randomQoute, 100000);
   quoteBtn.addEventListener("click", randomQoute);
 };

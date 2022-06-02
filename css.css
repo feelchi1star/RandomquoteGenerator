@@ -9,11 +9,14 @@
   --background-color: #5372f0;
 }
 body {
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+.body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background-color: var(--background-color);
+  margin: 40px auto;
 }
 .wrapper {
   width: 605px;
@@ -101,7 +104,48 @@ body {
   background-color: var(--background-color);
   font-style: 16px;
 }
-button .loading{
-   opacity: 0.7;
-   pointer-events: none;
+button .loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+.owner {
+  text-align: center;
+  bottom: 10px;
+  position: absolute;
+  margin: 0px 0px auto 30vw;
+  color: #fff;
+}
+a {
+  color: #fff;
+}
+@media screen and (max-width: 560px) {
+  body {
+    align-items: center;
+    min-height: 40vh;
+    margin: 10px;
+  }
+  .features {
+    flex-wrap: wrap-reverse;
+    gap: 10px;
+  }
+  .features button {
+    padding: 9px 18px;
+  }
+  .features ul li {
+    width: 40px;
+    height: 30px;
+  }
+  .wrapper header {
+    font-size: 2.1em;
+  }
+  .quote-area .quote {
+    font-size: 1.2em;
+  }
+  .owner {
+    text-align: left;
+    position: relative;
+    text-align: center;
+    position: relative;
+    margin: 30px 0px auto 3px;
+  }
 }
