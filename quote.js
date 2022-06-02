@@ -4,8 +4,8 @@ const quoteText = document.querySelector(".quote"),
   name = document.querySelector(".name"),
   soundbtn = document.querySelector(".sound"),
   copyBtn = document.querySelector(".copy"),
-  twiter = document.querySelector(".twitter");
-
+  twiter = document.querySelector(".twitter"),
+  wa = document.querySelector(".whatsapp");
 function random_bg_color() {
   var x = Math.floor(Math.random() * 256);
   var y = Math.floor(Math.random() * 256);
@@ -14,7 +14,7 @@ function random_bg_color() {
 
   document.querySelector("button").style.background = bgColor;
   document.querySelector("body").style.background = bgColor;
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 4; i++) {
     document.querySelectorAll("li")[i].style.border = bgColor + "2px solid";
     document.querySelectorAll("li")[i].style.color = bgColor;
   }
@@ -42,17 +42,19 @@ function randomQoute() {
 // Add event listener to Sound Button
 soundbtn.addEventListener("click", () => {
   //SpeechSynthesisUtterance() is a web api that sends a speech request;
-  let synch = window.SpeechSynthesis;
-  let utterrance = new SpeechSynthesisUtterance(
-    `${quoteText.innerText} by ${name.innerText}`
-  );
+  let utterrance = new SpeechSynthesisUtterance();
+  utterrance.volume = 1;
+  utterrance.rate = 1;
+  utterrance.pitch = 1;
+  utterrance.text = `${quoteText.innerText} by ${name.innerText}`;
   // speak method for speechSynthesis
-  synch.speak(utterrance);
+
+  window.speechSynthesis.speak(utterrance);
 });
 // Add event listener to Copy Button
 copyBtn.addEventListener("click", () => {
   // copies the text when clicked
-  navigator.clipboard.writeText(`${quoteText.innerText} by ${name.innerText}`);
+  navigator.clipboard.writeText(`${quoteText.innerText} -- ${name.innerText}`);
   alert("copied");
 });
 
@@ -63,8 +65,15 @@ twiter.addEventListener("click", () => {
   window.open(tweetUrl, "_blank");
 });
 
+// Add event listener to Whatsapp Button
+wa.addEventListener("click", () => {
+  // share the text to whatsapp when clicked
+  let whatlink = `https://api.whatsapp.com/send?text=${quoteText.innerHTML}+--+${name.innerText}`;
+  window.open(whatlink, "_blank");
+});
+
 //   Adding event Listner to New Quote Button
 window.onload = () => {
-  // setInterval(randomQoute, 5000);
+  setInterval(randomQoute, 10000);
   quoteBtn.addEventListener("click", randomQoute);
 };
