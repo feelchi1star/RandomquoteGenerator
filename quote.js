@@ -24,7 +24,7 @@ function random_bg_color() {
 function randomQoute() {
   quoteBtn.classList.add("loading");
   quoteBtn.innerText = "Loading Quote ...";
-  fetch("http://api.quotable.io/random")
+  fetch("https://api.quotable.io/random")
     .then((res) => res.json())
     .then((data) => {
       // Check weather the data from an api is ready
